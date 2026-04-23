@@ -104,6 +104,18 @@
 </div>
 
 <script>
+  <!-- Service Worker Kaydı (Script etiketinin en başına ekleyebilirsin) -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').then(reg => {
+        console.log('Servis işçisi kayıtlı!', reg);
+      }).catch(err => {
+        console.log('Kayıt başarısız:', err);
+      });
+    });
+  }
+</script>
   let txs = JSON.parse(localStorage.getItem('txs_v2') || '[]');
   const people = ["Erdal", "A.A", "N.A"];
   const months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
